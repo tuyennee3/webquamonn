@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../web_nongsan/asset/css/header.css">
+    <link rel="stylesheet" href="../web_nongsan/asset/css/signin.css">
+    <title>Document</title>
+</head>
+
+<body>
+    <header>
+        <div class="content_header">
+
+            <div class="link_header">
+                <a href="index.html" class="header_link">Home</a>
+                <a href="#" class="header_link">About</a>
+                <a href="product.html" class="header_link">Products</a>
+                <a href="cartpage.html" class="header_link">Cart</a>
+            </div>
+        </div>
+        <div class="line"></div>
+    </header>
+    <div class="content">
+        <img src="../web_nongsan/asset/img/homepage/logo.png" class="img_header1">
+        <div class="button_signin">
+            <h2>Your Name</h2>
+            <input id="nameInput" type="text" class="input_login_password">
+            <h2>Email ID</h2>
+            <input id="emailInput" type="text" class="input_login_password">
+            <h2>Password</h2>
+            <input id="passwordInput" type="password" class="input_login_password">
+        </div>
+        <img src="../web_nongsan/asset/img/signin/Frame 13.png" class="img_signin1">
+        <button id="signInButton" class="button">Sign in</button>
+    </div>
+    
+    <script>
+        document.getElementById('signInButton').addEventListener('click', function() {
+            var nameInput = document.getElementById('nameInput');
+            var emailInput = document.getElementById('emailInput');
+            var passwordInput = document.getElementById('passwordInput');
+            
+            var name = nameInput.value.trim();
+            var email = emailInput.value.trim();
+            var password = passwordInput.value.trim();
+            
+            var emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            var passwordPattern = /^[a-zA-Z0-9]*$/;
+            
+            var isValid = true;
+            
+            // Reset error styles
+            nameInput.classList.remove('error');
+            emailInput.classList.remove('error');
+            passwordInput.classList.remove('error');
+            
+            if (name === '') {
+                isValid = false;
+                nameInput.classList.add('error');
+            }
+            
+            if (!emailPattern.test(email)) {
+                isValid = false;
+                emailInput.classList.add('error');
+            }
+            
+            if (!passwordPattern.test(password)) {
+                isValid = false;
+                passwordInput.classList.add('error');
+            }
+            
+            if (isValid) {
+                window.location.href = 'welcome.html';
+            } else {
+                alert('Please fill in the form correctly.');
+            }
+        });
+    </script>
+</body>
+
+</html>
